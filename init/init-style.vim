@@ -287,5 +287,7 @@ set tabline=%!Vim_NeatTabLine()
 set guitablabel=%{Vim_NeatGuiTabLabel()}
 set guitabtooltip=%{Vim_NeatGuiTabTip()}
 
-
-
+ "----------------------------------------------------------------------
+ "  添加下划线
+ "----------------------------------------------------------------------
+set cursorline

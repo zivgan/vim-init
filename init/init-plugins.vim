@@ -53,6 +53,7 @@ Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
 " Diff 增强，支持 histogram / patience 等更科学的 diff 算法
 Plug 'chrisbra/vim-diff-enhanced'
 
+Plug 'Valloric/YouCompleteMe'
 
 "----------------------------------------------------------------------
 " Dirvish 设置：自动排序并隐藏文件，同时定位到相关文件
@@ -215,14 +216,22 @@ if index(g:bundle_group, 'tags') >= 0
 	let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
 	let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
 	let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+	let g:gutentags_ctags_extra_args += ['--languages=c,c++,java']
+	let g:gutentags_ctags_extra_args += ['--exclude=*.js']
+
+	let g:gutentags_trace = 1
+
+	" 检测 ~/.cache/tags 不存在就新建
+	if !isdirectory(expand('~/.cache/tags'))
+	    silent! call mkdir('~/.cache/tags', 'p')
+    endif
 
 	" 使用 universal-ctags 的话需要下面这行，请反注释
-	" let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
+	let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
 
 	" 禁止 gutentags 自动链接 gtags 数据库
 	let g:gutentags_auto_add_gtags_cscope = 0
 endif
-
 
 "----------------------------------------------------------------------
 " 文本对象：textobj 全家桶
